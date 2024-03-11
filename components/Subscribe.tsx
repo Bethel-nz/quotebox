@@ -27,7 +27,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Mail } from "lucide-react";
 import { useState } from "react";
-import { addUserMail } from "@/lib/actions";
+import { addUserToMailList } from "@/lib/actions";
 import { useToast } from "./ui/use-toast";
 
 const formSchema = z.object({
@@ -49,7 +49,7 @@ export function Subscribe() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await addUserMail(values.email);
+      await addUserToMailList(values.email);
       toast({
         title: "Successful.",
         description: "Welcome to a refreshing experience.",

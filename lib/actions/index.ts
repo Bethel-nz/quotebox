@@ -2,9 +2,9 @@
 
 import prisma from "@/prisma/client";
 
-export async function addUserMail(email: string) {
+export async function addUserToMailList(email: string) {
   try {
-    const subscriber = await prisma.user.create({
+    const subscriber = await prisma.users.create({
       data: { email },
     });
 
