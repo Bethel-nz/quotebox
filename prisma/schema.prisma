@@ -15,3 +15,8 @@ model Quotes {
   author     String?  @default("")
   tags       String?
 }
+
+model Users {
+  id    String @id @default(uuid())
+  email String
+}

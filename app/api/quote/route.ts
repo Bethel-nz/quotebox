@@ -3,7 +3,6 @@ import prisma from "@/prisma/client";
 
 export const GET = async () => {
   try {
-    // Retrieve the total count of quotes from the database
     const quote_count = await prisma.quotes.count();
 
     const numberOfQuotes = 4;
@@ -21,8 +20,8 @@ export const GET = async () => {
         })
       )
     );
-    
-    return Response.json({ error: null, data, status: 200 });
+
+    return NextResponse.json({ error: null, data, status: 200 });
   } catch (error: any) {
     console.log("[Quote]: ", error.message);
   }
