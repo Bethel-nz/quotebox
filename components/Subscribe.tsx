@@ -28,6 +28,7 @@ import { z } from "zod";
 import { Mail } from "lucide-react";
 import { useState } from "react";
 import { addUserMail } from "@/lib/actions";
+import { useToast } from "./ui/use-toast";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -37,6 +38,7 @@ const formSchema = z.object({
 
 export function Subscribe() {
   const [open, setOpen] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,8 +48,20 @@ export function Subscribe() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    await addUserMail(values.email);
+    try {
+      await addUserMail(values.email);
+      toast({
+        title: "Successful.",
+        description: "Welcome to a refreshing experience.",
+      });
+    } catch (error) {
+      console.log(error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    }
   }
 
   return (
