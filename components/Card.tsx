@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
 import { AnimatedText } from "./AnimatedText";
 import Image from "next/image";
 import { downloadImage } from "@/lib/downlod";
