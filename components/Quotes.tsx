@@ -1,19 +1,15 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
-import { AnimatedText } from "./AnimatedText";
-import Image from "next/image";
-import { downloadImage } from "@/lib/downlod";
 import Card from "./Card";
 
 const Quotes = () => {
   const { data, error } = useSWR("/api/quote", fetcher, {
-    refreshInterval: 3000000,
+    refreshInterval: 5000000,
   });
 
-  console.log(data);
 
   if (!data) return "Loading...";
   if (error) return "Error";

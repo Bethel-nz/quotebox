@@ -30,7 +30,10 @@ export const AnimatedText = ({
       <motion.div ref={scope}>
         {words.map((word, idx) => {
           return (
-            <motion.span key={word + idx} className="text-white text-base leading-6 font-light break-words">
+            <motion.span
+              key={word + idx}
+              className="text-white text-base leading-6 font-light break-words"
+            >
               {word}{" "}
             </motion.span>
           );

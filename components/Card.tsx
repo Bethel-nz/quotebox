@@ -32,7 +32,7 @@ const Card = ({ data }: { data: QuoteProps }) => {
         />
         <>
           {quote && (
-            <AnimatedText word={quote?.replace(/(?<=\w)\?(?=\w)/g, "'")} />
+            <AnimatedText word={quote.replace(/(?<=\w)\?(?=\w)/g, "'")} />
           )}
         </>
 
@@ -40,7 +40,8 @@ const Card = ({ data }: { data: QuoteProps }) => {
           - {author?.split(",")[0]}
         </p>
         <p className={"text-sm text-gray-300/60 "}>
-          Tag: {tags?.split(",")[0]}
+          <span className="font-semibold">Tag: </span>
+          {tags?.split(",")[0]}
         </p>
       </div>
     </div>

@@ -98,7 +98,10 @@ export function Subscribe() {
               )}
             />
             <DialogFooter className="sm:justify-start">
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full bg-[#FFF3B0] hover:bg-[#FFF3B0] hover:opacity-80 text-[#1A1600]"
+              >
                 Subscribe
               </Button>
             </DialogFooter>
