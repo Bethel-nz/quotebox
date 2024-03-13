@@ -67,7 +67,10 @@ export function Subscribe() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="font-normal text-sm" onClick={() => setOpen(true)}>
+        <Button
+          className="font-normal text-sm px-3 py-4 bg-[#FFF3B0] hover:bg-[#FFF3B0] hover:opacity-80 text-[#1A1600] rounded-[50px]"
+          onClick={() => setOpen(true)}
+        >
           <Mail color="black" className="mr-2" /> Subscribe to our mail list
         </Button>
       </DialogTrigger>

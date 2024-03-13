@@ -19,9 +19,9 @@ const Card = ({ data }: { data: QuoteProps }) => {
   return (
     <div
       ref={cardRef}
-      className="bg-red-400  rounded-2xl min-w-[296px] min-h-[221px] max-w-[320px] py-10 px-6"
+      className="bg-[#FFFFFF33]  rounded-[50px] min-w-[296px] min-h-[221px] max-w-[320px] py-10 px-6"
     >
-      <div className="flex flex-col space-y-3 transition-all ease-in-out">
+      <div className="flex flex-col space-y-3 text-white transition-all ease-in-out">
         <Image
           src={"/assets/images/quote.svg"}
           alt="quote"
