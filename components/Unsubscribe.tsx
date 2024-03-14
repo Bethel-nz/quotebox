@@ -35,7 +35,7 @@ const Unsubscribe = () => {
     }
   };
   return (
-    <div className="flex flex-col space-y-6 items-center justify-center">
+    <div className="flex flex-col space-y-6 items-center justify-center min-w-fit">
       <p className="font-bold text-base">
         Are you sure you want to unsubscribe?
       </p>
@@ -43,13 +43,13 @@ const Unsubscribe = () => {
       <Button
         type="submit"
         onClick={handleUnsubscribe}
-        className="font-semibold w-full md:w-2/5"
+        className="font-semibold w-full"
       >
         {loading && <Loader color="black" className="animate-spin mr-2" />}
         {loading ? "Unsubscribing..." : "Yes, Unsubscribe me"}
       </Button>
 
-      <Button variant="outline" className="w-full md:w-2/5">
+      <Button variant="outline" className="w-full">
         <Link href="/">No, Keep me subscribed</Link>
       </Button>
     </div>
