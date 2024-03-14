@@ -25,8 +25,8 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#FFF3B0",
+          foreground: "#1A1600",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -60,6 +60,7 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        custom: "50px",
       },
       keyframes: {
         "accordion-down": {

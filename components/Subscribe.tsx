@@ -25,7 +25,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Mail } from "lucide-react";
+import { Loader, Mail } from "lucide-react";
 import { useState } from "react";
 import { addUserToMailList } from "@/lib/actions";
 import { useToast } from "./ui/use-toast";
@@ -38,6 +38,7 @@ const formSchema = z.object({
 
 export function Subscribe() {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,11 +49,13 @@ export function Subscribe() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
     try {
       await addUserToMailList(values.email);
       toast({
+        variant: "successful",
         title: "Successful.",
-        description: "Welcome to a refreshing experience.",
+        description: "You have been added to the mail list.",
       });
     } catch (error) {
       console.log(error);
@@ -61,6 +64,8 @@ export function Subscribe() {
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request.",
       });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -68,13 +73,13 @@ export function Subscribe() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          className="font-normal text-sm px-3 py-4 bg-[#FFF3B0] hover:bg-[#FFF3B0] hover:opacity-80 text-[#1A1600] rounded-[50px]"
+          className="w-full md:w-fit font-normal text-sm px-3 py-4 mb-20 md:mb-0 rounded-custom"
           onClick={() => setOpen(true)}
         >
           <Mail color="black" className="mr-2" /> Subscribe to our mail list
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="rounded-[16px] p-6 max-w-[90vw] md:max-w-md">
         <DialogHeader>
           <DialogTitle>Welcome to Quotebox</DialogTitle>
           <DialogDescription>
@@ -98,11 +103,9 @@ export function Subscribe() {
               )}
             />
             <DialogFooter className="sm:justify-start">
-              <Button
-                type="submit"
-                className="w-full bg-[#FFF3B0] hover:bg-[#FFF3B0] hover:opacity-80 text-[#1A1600]"
-              >
-                Subscribe
+              <Button type="submit" className="w-full">
+                {loading && <Loader color="black" className="animate-spin mr-2" />}
+                {loading ? "Subscribing..." : "Subscribe"}
               </Button>
             </DialogFooter>
           </form>

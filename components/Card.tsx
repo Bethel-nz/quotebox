@@ -17,7 +17,7 @@ const Card = ({ data }: { data: QuoteProps }) => {
   return (
     <div
       ref={cardRef}
-      className="bg-[#FFFFFF33]  rounded-[50px] min-w-[296px] min-h-[221px] max-w-[320px] py-10 px-6"
+      className="no-scrollbar bg-[#FFFFFF33] rounded-custom min-w-[296px] min-h-[221px] max-h-[280px] max-w-[320px] overflow-y-scroll py-10 px-6"
     >
       <div className="flex flex-col space-y-3 text-white transition-all ease-in-out">
         <Image
@@ -34,7 +34,7 @@ const Card = ({ data }: { data: QuoteProps }) => {
           )}
         </>
 
-        <p className="text-sm leading-[21px] font-light text-[#FFF3B0]">
+        <p className="text-sm font-light text-primary">
           - {author?.split(",")[0]}
         </p>
         <p className={"text-sm text-gray-300/60 "}>
