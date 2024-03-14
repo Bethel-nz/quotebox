@@ -30,25 +30,23 @@ export async function GET(request: Request) {
     });
 
     const emailPromises = users.map((user) => {
-      const unsubscribeLink = `https://your-domain.com/api/unsubscribe?email=${encodeURIComponent(
-        user.email
-      )}`;
+      const unsubscribeLink = `https://your-domain.com/api/unsubscribe?token=${user.token}`;
 
       const mailOptions = {
         from: "quotebox@gmail.com",
         to: user.email,
         subject: "Today's Quote",
         text: `
-  <div>
-    <h2>Quote of the day!</h2>
-    <p>${quote.quote}</p>
-    <p>${quote.author}</p>
-    <div style="border: 1px solid #ccc; padding: 10px; background-color: #f8f8f8;">
-      <p>We're excited to inform you that ${quote.tags} is now back in stock.</p>
-    </div>
-    <p>Click to <a href="${unsubscribeLink}">Unsubscribe</a></p>
-  </div>
-`,
+          <div>
+          <h2>Quote of the day!</h2>
+          <p>${quote.quote}</p>
+          <p>${quote.author}</p>
+          <div style="border: 1px solid #ccc; padding: 10px; background-color: #f8f8f8;">
+          <p>We're excited to inform you that ${quote.tags} is now back in stock.</p>
+          </div>
+          <p>Click to <a href="${unsubscribeLink}">Unsubscribe</a></p>
+          </div>
+        `,
       };
       return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, (error, info) => {

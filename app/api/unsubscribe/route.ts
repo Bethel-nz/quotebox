@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/prisma/client";
 
-export const POST = async (request: Request, response: Response) => {
+export const POST = async (request: Request) => {
   const { email } = await request.json();
   try {
     const user = await prisma.users.findFirst({
