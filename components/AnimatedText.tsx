@@ -24,6 +24,7 @@ export const AnimatedText = ({
 			}
 		);
 	}, [animate, word]);
+
 	const renderWords = () => {
 		return (
 			<motion.div ref={scope}>
@@ -31,7 +32,7 @@ export const AnimatedText = ({
 					return (
 						<motion.span
 							key={word + idx}
-							className='text-white opacity-0 text-lg md:text-md'
+							className='text-white text-base leading-6 font-light break-words'
 						>
 							{word}{' '}
 						</motion.span>
@@ -42,9 +43,9 @@ export const AnimatedText = ({
 	};
 
 	return (
-		<div className={cn('font-bold', className)}>
+		<div className={cn('font-regular', className)}>
 			<div className='mt-4'>
-				<div className=' text-white  leading-snug tracking-wide '>
+				<div className=' text-white leading-snug tracking-wide'>
 					<>{renderWords() as unknown as string}</>
 				</div>
 			</div>
