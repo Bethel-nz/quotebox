@@ -1,12 +1,13 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
-import { toast, useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { removeUserFromMailList } from "@/lib/actions";
 import { Loader } from "lucide-react";
+import Link from "next/link";
 
 const Unsubscribe = () => {
   const searchParams = useSearchParams();
@@ -35,7 +36,7 @@ const Unsubscribe = () => {
     }
   };
   return (
-    <div>
+    <div className="flex flex-col space-y-6 items-center justify-center">
       <p className="font-bold text-base">
         Are you sure you want to unsubscribe?
       </p>
@@ -49,13 +50,8 @@ const Unsubscribe = () => {
         {loading ? "Unsubscribing..." : "Yes, Unsubscribe me"}
       </Button>
 
-      <Button
-        type="submit"
-        variant="outline"
-        className="w-full md:w-2/5"
-        onClick={redirect("/")}
-      >
-        No, Keep me subscribed
+      <Button variant="outline" className="w-full md:w-2/5">
+        <Link href="/">No, Keep me subscribed</Link>
       </Button>
     </div>
   );
