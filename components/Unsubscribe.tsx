@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { redirect } from "next/navigation";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { removeUserFromMailList } from "@/lib/actions";
